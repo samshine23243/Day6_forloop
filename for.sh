@@ -1,10 +1,19 @@
-read -p "Enter N:" N
-for ((i=1;i<=N;i++))
+
+read -p "Enter Number : " N
+for ((i=2;i<N;i++))
 do
-   temp=1
-   for ((j=1;j<=i;j++))
-   do
-      temp=$(($temp*2))
-   done
-   echo $temp
+   temp=$(($N%$i))
+   if [ $temp -eq "0" ]
+   then
+      flag=1
+      break
+   else
+      flag=0
+   fi
 done
+if [ $flag -eq "1" ]
+then
+   echo "Not Prime Number" $N
+else
+   echo "Prime Number" $N
+fi
